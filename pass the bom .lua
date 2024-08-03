@@ -187,37 +187,6 @@ Tab1:AddToggle({
 })
 
 ------remove hitbox////////-----
-Tab1:AddButton({
-	Name = "Remove Hitbox",
-	Callback = function()
-	OrionLib:MakeNotification({
-	Name = "Notification",
-	Content = "Click Remove Hitbox2 if doesn't work",
-	Image = "rbxassetid://18594014746",
-	Time = 10
-})
-
-wait(0.1)
-      		local LocalPlayer = game.Players.LocalPlayer
-	local Character = LocalPlayer.Character
-
-	for destructionIteration = 1, 100 do wait()
-		pcall(function()
-			Character:WaitForChild("CollisionPart"):Destroy()
-			print("No More Hitbox")
-		end)
-	end
-
-	LocalPlayer.CharacterAdded:Connect(function(Character)
-		for destructionIteration = 1, 100 do wait()
-			pcall(function()
-				Character:WaitForChild("CollisionPart"):Destroy()
-				print("No More Hitbox")
-			end)
-		end
-	end)
-  	end    
-})
 
 Tab1:AddButton({
 	Name = "Remove Hitbox v2",
