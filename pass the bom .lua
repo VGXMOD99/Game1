@@ -133,7 +133,7 @@ local Section = Tab1:AddSection({
 Tab1:AddSlider({
     Name = "Walk Speed",
     Min = 0,
-    Max = 200,
+    Max = 100,
     Default = 16,
     Color = Color3.fromRGB(255, 255, 255),
     Increment = 1,
@@ -248,6 +248,42 @@ removeCollisionPart(Character)
 LocalPlayer.CharacterAdded:Connect(function(character)
     removeCollisionPart(character)
 end)
+  	end    
+})
+
+Tab1:AddButton({
+	Name = "Remove MeteorShower",
+	Callback = function()
+	OrionLib:MakeNotification({
+	Name = "Notification",
+	Content = "idk if this work or not",
+	Image = "rbxassetid://18594014746",
+	Time = 10
+})
+
+wait(0.1)
+      		-- Assuming you have a main script that handles events in your game
+
+local function removeMeteorShower()
+    -- Check if the meteor shower function or event exists and remove it
+    if game:FindFirstChild("MeteorShower") then
+        game.MeteorShower:Destroy()
+    end
+
+    -- If it's part of another script, find and remove it from that script
+    for _, script in ipairs(game:GetDescendants()) do
+        if script:IsA("Script") or script:IsA("LocalScript") then
+            local source = script.Source
+            if string.find(source, "MeteorShower") then
+                local newSource = string.gsub(source, "MeteorShower", "")
+                script.Source = newSource
+            end
+        end
+    end
+end
+
+-- Call the function to remove the meteor shower event
+removeMeteorShower()
   	end    
 })
 
